@@ -1,0 +1,15 @@
+{
+  "name": "DiscordBot",
+  "version": "1.0.0",
+  "description": "A bot to shut avu up",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Liao",
+  "license": "",
+  "dependencies": {
+    "discord.io": "^2.1.3",
+    "winston": "^2.2.0"
+  }
+}
