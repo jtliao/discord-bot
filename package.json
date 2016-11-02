@@ -11,7 +11,11 @@
     "name" : "Jason Liao",
     "email" : "jtl93@cornell.edu"
   },
-  "license": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jtliao/discord-bot"
+  },
+  "license": "ISC",
   "dependencies": {
     "discord.js": "^9.2.0"
   }

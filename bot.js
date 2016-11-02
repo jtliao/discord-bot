@@ -12,7 +12,6 @@ var simpleMessage = {
 
 var ttsMessage = {
     "!justin" : "top kek m8",
-    "avu" : "shut the fuck up",
     "!top" : "die",
     "!meteos" : "Fucking superstar jungler for cloud nine. Yeah 12.7 kda in the s3 summer split."
 };
@@ -37,35 +36,36 @@ require("jsdom").env("", function(err, window) {
         else if(ttsMessage[message.content]) {
             message.channel.sendMessage(ttsMessage[message.content], {tts: true});
         }
+        else if(message.content == "atranho" || message.content == "avu"){
+            console.log(message.author.username);
+            message.delete();
+        }
         else if (message.content.startsWith("!game")) {
             var summName = message.content.substring(message.content.indexOf(" ")+1)
                            .replace(" ", "").toLowerCase().trim();
             var api_key = "RGAPI-C4F779BC-3FC7-4213-8728-E5A0B63E32B3";
             var summID;
+            console.log($.fn.jquery);
             $.ajax({
                 url: 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ summName + '?api_key=' + api_key,
                 type: 'GET',
                 dataType: 'json',
                 success: function (json) {
-                    //console.log(json[summName].name);
                     //console.log(json[summName].id);
                     console.log(json);
                     summID = json[summName].id;
-                    //console.log('https://na.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/NA1/' + summID + '?api_key=' + api_key);
+                    //console.log(summID);
                     $.ajax({
-                        //url: 'https://na.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/NA1/' + summID + '?api_key=' + api_key,
-                        url: 'https://na.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/NA1/21631024?api_key=RGAPI-C4F779BC-3FC7-4213-8728-E5A0B63E32B3',
+                        url: 'https://na.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/NA1/' + summID + '?api_key=' + api_key,
+                        //url: 'https://na.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/NA1/21631024?api_key=RGAPI-C4F779BC-3FC7-4213-8728-E5A0B63E32B3',
                         type: 'GET',
                         dataType: 'json',
                         success: function (json) {
-                            console.log("works?");
-                            console.log(json);
-
+                            console.log("WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            //console.log(textStatus);
-                            console.log(errorThrown);
-                            //console.log(XMLHttpRequest);
+                            console.log(textStatus, errorThrown);
+                            console.log(XMLHttpRequest);
                             message.channel.sendMessage("Game not found");
                         }
                     });
